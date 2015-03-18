@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.resources>
+		<xp:script src="/Pagedown/Markdown.Converter.js" clientSide="true"></xp:script>
+		<xp:script src="/Pagedown/Markdown.Sanitizer.js" clientSide="true"></xp:script>
+		<xp:script src="/Pagedown/Markdown.Editor.js" clientSide="true"></xp:script>
+	</xp:this.resources>
+
+	<xc:_layoutBS3 navbarTopInverse="false"
+		navbarBottomInverse="true" hideHelpArea="false" fullWidth="false"
+		pageTitle="Pagedown demo" color="#f8f5f0">
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				<div class="wmd-panel">
+					<div id="wmd-button-bar"></div>
+					<xp:inputTextarea id="inputTextarea1"
+						styleClass="wmd-input" themeId="notheme">
+					</xp:inputTextarea>
+				</div>
+			</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+	
+	<xp:scriptBlock id="scriptBlock1" type="text/javascript">
+		<xp:this.value><![CDATA[$(document).ready(function () {
+	var converter1 = Markdown.getSanitizingConverter();
+		converter1.hooks.chain("preBlockGamut", function (text, rbg) {
+			return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm, function (whole, inner) {
+				return "<blockquote>" + rbg(inner) + "</blockquote>\n";
+			});
+		});
+		var editor1 = new Markdown.Editor(converter1);
+        editor1.run();
+});]]></xp:this.value>
+	</xp:scriptBlock>
+</xp:view>

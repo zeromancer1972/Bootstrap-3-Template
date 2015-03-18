@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xc:_layoutBS3
+		pageTitle="The Bootstrap 3 Template project"
+		navbarBottomInverse="true">
+		<xp:this.facets>
+			<xp:div
+				xp:key="facetMiddle">
+				<xp:div
+					rendererType="bootstrap.Alert"
+					role="success">
+					This is sample application to show you the start with this
+					template.
+					<xp:this.attrs>
+						<xp:attr
+							name="closable"
+							value="true">
+						</xp:attr>
+					</xp:this.attrs>
+				</xp:div>
+			</xp:div>
+			<xp:div
+				xp:key="facetRight">
+				<xe:widgetContainer
+					id="widget1"
+					titleBarText="xe:WidgetContainer"> This is a widget container</xe:widgetContainer>
+				<xp:div
+					title="Panel title"
+					rendererType="bootstrap.Panel">
+					<h4>Custom renderers</h4>
+					<p>A DIV using a custom renderer</p>
+				</xp:div>
+				<xp:panel
+					title="xp:panel"
+					rendererType="bootstrap.Panel">
+					<p>A panel using a custom renderer</p>
+					<xp:checkBox
+						text="Label"
+						id="checkBox1"
+						rendererType="custom.checkbox">
+					</xp:checkBox>
+					<xp:link
+						escape="true"
+						id="link1"
+						text="Click me!">
+						<xp:eventHandler
+							event="onclick"
+							submit="false">
+							<xp:this.script><![CDATA[dojo.byId("#{id:checkBox1}").click();]]></xp:this.script>
+						</xp:eventHandler>
+					</xp:link>
+				</xp:panel>
+			</xp:div>
+			<xp:div
+				xp:key="facetHelp"> Welcome to the Bootstrap 3 Template project</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>

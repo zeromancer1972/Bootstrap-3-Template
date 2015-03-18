@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:bx="http://www.openntf.org/xsp/bootstrap">
+	<xc:_layoutBS3
+		pageTitle="Subpage"
+		navbarBottomInverse="true"
+		hideLeftColumn="true"
+		hideRightColumn="true">
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				This is some content
+				<div class="form-group">
+					<label>Select 2 demo</label>
+					<xp:comboBox
+						id="comboBox1"
+						value="#{viewScope.select2}">
+						<xp:selectItems>
+							<xp:this.value><![CDATA[#{javascript:@DbColumn(@DbName(),"all",1)}]]></xp:this.value>
+						</xp:selectItems>
+					</xp:comboBox>
+					<bx:select2PickerCombo
+						id="select2PickerCombo1"
+						for="comboBox1"
+						placeHolder="Select a value">
+					</bx:select2PickerCombo>
+				</div>
+				<div class="form-group">
+					<label>LongPress demo</label>
+					<xp:inputText
+						id="inputText1"
+						styleClass="longpress">
+					</xp:inputText>
+				</div>
+			</xp:div>
+			<xp:div xp:key="facetHelp">
+				This is another subpage with color code
+			</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>

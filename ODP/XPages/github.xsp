@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xc:_layoutBS3
+		navbarBottomInverse="true"
+		fullWidth="false">
+		<xp:this.facets>
+			<xp:div
+				xp:key="facetMiddle">
+				<xp:repeat
+					var="repo"
+					indexVar="index">
+					<xp:this.value><![CDATA[#{javascript:github.repos("zeromancer1972");}]]></xp:this.value>
+					<blockquote>
+						<h4>
+							<xp:link
+								text="#{javascript:repo.name}"
+								value="#{javascript:repo.html_url}"
+								target="_blank">
+							</xp:link>
+						</h4>
+						<xp:text
+							styleClass="badge">
+							<xp:this.value><![CDATA[#{javascript:"Last updated: "+repo.updated_at}]]></xp:this.value>
+						</xp:text>
+						<br />
+						<xp:text
+							styleClass="small"
+							value="#{javascript:repo.description}">
+						</xp:text>
+					</blockquote>
+				</xp:repeat>
+			</xp:div>
+			<xp:div
+				xp:key="facetRight">
+				<xc:ccPanel
+					footer="false"
+					hideBody="false"
+					title="Visit my GitHub profile">
+					<xp:this.facets>
+						<xp:div
+							xp:key="body">
+							<xp:panel>
+								<xp:this.data>
+									<xe:objectData
+										var="profile">
+										<xe:this.createObject><![CDATA[#{javascript:return github.profile("zeromancer1972");}]]></xe:this.createObject>
+									</xe:objectData>
+								</xp:this.data>
+								<a
+									href="#{javascript:profile.html_url}"
+									target="_blank">
+									<xp:image
+										url="#{javascript:profile.avatar_url}"
+										id="image1"
+										style="width:100%"
+										styleClass="circle">
+									</xp:image>
+								</a>
+								<h4
+									class="text-center">
+									<xp:text
+										value="#{javascript:profile.login}">
+									</xp:text>
+								</h4>
+							</xp:panel>
+						</xp:div>
+					</xp:this.facets>
+				</xc:ccPanel>
+				<xp:div
+					rendererType="bootstrap.Panel"
+					title="Information">
+					<p>The classes used to access the GitHub API are:</p>
+					<code>
+						<p>
+							org.openntf.github.model.GitHubProfile
+							<br />
+							org.openntf.github.model.GitHubRepo
+							<br />
+							org.openntf.github.model.GitHubRepos
+							<br />
+							org.openntf.github.xsp.GitHubController
+						</p>
+					</code>
+				</xp:div>
+			</xp:div>
+			<xp:div
+				xp:key="facetHelp"> This demonstrates the usage of the GitHub API</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>

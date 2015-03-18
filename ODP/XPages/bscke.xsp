@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xc:ccBSCKE></xc:ccBSCKE>
+	<xc:_layoutBS3
+		pageTitle="Boostrap CKEditor">
+		<xp:this.facets>
+			<xp:div
+				xp:key="facetRight">
+				<div
+					class="panel panel-default">
+					<div
+						class="panel-heading">
+						<h4
+							class="panel-title">Using the BSCKE</h4>
+					</div>
+					<div
+						class="panel-body">
+						Place the&#160;ccBSCKE custom control on your page. Create a
+						Richtext container (CKEditor). Look for the Dojo attributes on
+						this page and add them to your Richtext control. Please refer
+						to&#160;<a
+							href="http://openntf.org/XSnippets.nsf/snippet.xsp?id=solving-problems-with-ckeditor-in-9.0.1fp1-andor-fp2"
+							target="_blank"> this page</a>
+						&#160; to read about the workaround with customizing CKEditor and
+						FP1/FP2 usage
+					</div>
+				</div>
+			</xp:div>
+			<xp:div
+				xp:key="facetHelp"> Sample implementation of the Bootstrap skin for CKEditor
+			</xp:div>
+			<xp:div
+				xp:key="facetMiddle">
+				<xp:inputRichText
+					id="inputRichText1"
+					value="#{sessionScope.cke}">
+					<xp:this.dojoAttributes>
+						<xp:dojoAttribute
+							value="Full">
+							<xp:this.name><![CDATA[#{javascript:dojo.config.get("toolbartype")}]]></xp:this.name>
+						</xp:dojoAttribute>
+						<xp:dojoAttribute
+							name="extraPlugins"
+							value="autogrow">
+						</xp:dojoAttribute>
+						<xp:dojoAttribute
+							name="skin">
+							<xp:this.value><![CDATA[#{javascript:return @ClientType().equals("Web") && dojo.fp2 ? "BootstrapCK-Skin,/"+database.getFilePath()+"/bscke/" : ""}]]></xp:this.value>
+						</xp:dojoAttribute>
+						<xp:dojoAttribute
+							name="width"
+							value="100%">
+						</xp:dojoAttribute>
+					</xp:this.dojoAttributes>
+					<xp:this.dojoType><![CDATA[#{javascript:return @ClientType().equals("Web") ? "org.openntf.filesilo.CKEDITOR" : ""}]]></xp:this.dojoType>
+				</xp:inputRichText>
+			</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>

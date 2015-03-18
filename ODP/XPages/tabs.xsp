@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xc:_layoutBS3 navbarBottomInverse="true">
+		<xp:this.facets>
+			<xp:div
+				xp:key="facetMiddle"
+				id="refresh">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li>
+						<a
+							href="#home"
+							data-toggle="tab">
+							Home
+						</a>
+					</li>
+					<li>
+						<a
+							href="#profile"
+							data-toggle="tab">
+							Profile
+						</a>
+					</li>
+					<li>
+						<a
+							href="#messages"
+							data-toggle="tab">
+							Messages
+						</a>
+					</li>
+					<li>
+						<a
+							href="#settings"
+							data-toggle="tab">
+							<xp:label
+								value="#{javascript:@Now()}"
+								id="label1">
+								<xp:this.converter>
+									<xp:convertDateTime>
+										<xp:this.pattern><![CDATA[${javascript:"dd.MM.yyyy hh:mm:ss"}]]></xp:this.pattern>
+									</xp:convertDateTime>
+								</xp:this.converter>
+							</xp:label>
+						</a>
+					</li>
+				</ul>
+				<xp:scriptBlock
+					id="scriptBlock2"
+					type="text/javascript">
+					<xp:this.value><![CDATA[$(".nav-tabs a").on("click", function(){
+		activeTab = $(this).attr("href");
+});	
+
+if(activeTab){
+	$(".nav-tabs a").each(function(){
+		if($(this).attr("href") == activeTab){
+			$(this).tab("show");
+		}
+	});
+}]]></xp:this.value>
+				</xp:scriptBlock>
+				<div class="tab-content">
+					<div
+						class="tab-pane active"
+						id="home">
+						tab 1
+					</div>
+					<div
+						class="tab-pane"
+						id="profile">
+						tab 2
+					</div>
+					<div
+						class="tab-pane"
+						id="messages">
+						tab 3
+					</div>
+					<div
+						class="tab-pane"
+						id="settings">
+						tab 4
+					</div>
+				</div>
+				<br />
+				<xp:tabbedPanel
+					id="tabbedPanel1"
+					partialRefresh="true">
+					<xp:tabPanel
+						label="New Tab"
+						id="tabPanel1"
+						styleClass="tab-pane">
+						tab 1
+					</xp:tabPanel>
+					<xp:tabPanel
+						label="New Tab2"
+						id="tabPanel2"
+						styleClass="tab-pane">
+						tab 2
+					</xp:tabPanel>
+				</xp:tabbedPanel>
+				<br />
+				<xp:link
+					escape="true"
+					text="Refresh"
+					id="link1"
+					styleClass="btn btn-default">
+					<xp:eventHandler
+						event="onclick"
+						submit="true"
+						refreshMode="partial"
+						refreshId="refresh">
+					</xp:eventHandler>
+				</xp:link>
+			</xp:div>
+			<xp:scriptBlock
+				id="scriptBlock1"
+				xp:key="facetHelp"
+				type="text/javascript">
+				<xp:this.value><![CDATA[var activeTab = "#home";]]></xp:this.value>
+			</xp:scriptBlock>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>
